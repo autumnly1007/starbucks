@@ -25,7 +25,6 @@ const badgeEl = document.querySelector("header .badges");
 // 일정 시간에 한 번만 실행되도록 제한 걸기 / scroll 이벤트에서 많이 사용됨
 window.addEventListener("scroll", _.throttle(function () {
 
-  console.log(window.scrollY);
   if (window.scrollY > 500) {
 
     // 배지 숨기기
