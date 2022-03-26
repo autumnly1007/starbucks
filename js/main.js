@@ -18,3 +18,31 @@ searchInputEl.addEventListener("blur", () => {
   searchInputEl.setAttribute("placeholder", "");
   //searchInputEl.removeAttribute("placeholder");
 });
+
+const badgeEl = document.querySelector("header .badges");
+
+// lodash 라이브러리 : _.throttle(함수, 시간(ms))
+// 일정 시간에 한 번만 실행되도록 제한 걸기 / scroll 이벤트에서 많이 사용됨
+window.addEventListener("scroll", _.throttle(function () {
+
+  console.log(window.scrollY);
+  if (window.scrollY > 500) {
+
+    // 배지 숨기기
+    // badgeEl.style.display = 'none';
+    // gsap.to(요소, 지속시간, 옵션);
+    gsap.to(badgeEl, .6, {
+      opacity: 0,
+      display: 'none'
+    });
+
+  } else {
+    // 배지 보이기
+    // badgeEl.style.display = 'block';
+    gsap.to(badgeEl, .6, {
+      opacity: 1,
+      display: 'block'
+    });
+
+  }
+}, 300));
