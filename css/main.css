@@ -284,7 +284,6 @@ header .badges .badge {
 
 .visual .inner {
   height: 646px;
-  background-color: pink;
 }
 
 .visual .title {
@@ -327,4 +326,8 @@ header .badges .badge {
   position: absolute;
   bottom: 0;
   left: 275px;
+}
+
+.visual .fade-in {
+  opacity: 0;
 }
