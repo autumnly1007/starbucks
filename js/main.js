@@ -114,3 +114,14 @@ function random(min, max) {
   // `parseFloat()`을 통해 소수점을 가지는 숫자 데이터로 변환
   return parseFloat((Math.random() * (max - min) + min).toFixed(2))
 }
+
+const spyEls = document.querySelectorAll("section.scroll-spy");
+spyEls.forEach((spyEl) => {
+  new ScrollMagic
+    .Scene({
+      triggerElement: spyEl, // 보여짐 여부를 감시할 요소
+      triggerHook: .8 // 뷰포트 최상단:0, 뷰포트 최하단:1
+    })
+    .setClassToggle(spyEl, 'show')
+    .addTo(new ScrollMagic.Controller());
+});
