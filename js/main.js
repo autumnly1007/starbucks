@@ -20,6 +20,7 @@ searchInputEl.addEventListener("blur", () => {
 });
 
 const badgeEl = document.querySelector("header .badges");
+const toTopEl = document.querySelector("#to-top");
 
 // lodash 라이브러리 : _.throttle(함수, 시간(ms))
 // 일정 시간에 한 번만 실행되도록 제한 걸기 / scroll 이벤트에서 많이 사용됨
@@ -35,6 +36,11 @@ window.addEventListener("scroll", _.throttle(function () {
       display: 'none'
     });
 
+    // 버튼 보이기
+    gsap.to(toTopEl, .2, {
+      x: 0
+    });
+
   } else {
     // 배지 보이기
     // badgeEl.style.display = 'block';
@@ -43,8 +49,19 @@ window.addEventListener("scroll", _.throttle(function () {
       display: 'block'
     });
 
+    // 버튼 숨기기
+    gsap.to(toTopEl, .2, {
+      x: 100
+    });
+
   }
 }, 300));
+
+toTopEl.addEventListener("click", () => {
+  gsap.to(window, 0.7, {
+    scrollTo: 0
+  });
+});
 
 const fadeEls = document.querySelectorAll(".visual .fade-in");
 
@@ -136,3 +153,7 @@ spyEls.forEach((spyEl) => {
     .setClassToggle(spyEl, 'show')
     .addTo(new ScrollMagic.Controller());
 });
+
+const thisYear = document.querySelector(".this-year");
+thisYear.textContent = new Date().getFullYear(); // 2022
+
